@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
+    "build": "turbo run build"
   },
   "dependencies": {
     "@supabase/ssr": "^0.0.10",
