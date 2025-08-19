@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/architype-web/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "distDir": ".next"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "apps/architype-web/$1"
+    }
+  ],
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm -w build",
+  "outputDirectory": "apps/architype-web/.next",
+  "framework": "nextjs",
+  "functions": {
+    "apps/architype-web/src/app/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
+

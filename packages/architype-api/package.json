@@ -1,0 +1,19 @@
+{
+  "name": "@vnx-architype/api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared API utilities and schemas for VNX-Architype",
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No linting configured for api package'",
+    "build": "echo 'No build step for api package'"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
+

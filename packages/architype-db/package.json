@@ -1,0 +1,19 @@
+{
+  "name": "@vnx-architype/db",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Database schema and migrations for VNX-Architype",
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'No linting configured for db package'",
+    "build": "echo 'No build step for db package'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
+
