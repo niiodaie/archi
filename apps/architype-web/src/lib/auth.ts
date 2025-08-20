@@ -1,12 +1,12 @@
-import { createServerClient } from './supabase-server'
+import { getAuthServer, getMockUser, dbEnabled } from './db'
 import { redirect } from 'next/navigation'
 
 export async function getUser() {
-  const supabase = await createServerClient()
-  const { data: { user }, error } = await supabase.auth.getUser()
-  
+  const auth = await getAuthServer()
+  const { data: { user }, error } = await auth.getUser()
+
   if (error || !user) {
-    return null
+    return getMockUser() // Return mock user if auth is disabled or user not found
   }
   
   return user
@@ -15,7 +15,7 @@ export async function getUser() {
 export async function requireAuth() {
   const user = await getUser()
   
-  if (!user) {
+  if (!user && dbEnabled) {
     redirect('/auth/login')
   }
   
