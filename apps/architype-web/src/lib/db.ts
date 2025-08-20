@@ -1,4 +1,3 @@
-// server-only DB adapter with noop fallback
 import "server-only";
 import type { PostgrestError } from "@supabase/supabase-js";
 import { supabaseServer } from "./supabaseServer";
