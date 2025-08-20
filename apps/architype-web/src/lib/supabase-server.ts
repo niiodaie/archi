@@ -1,3 +1,4 @@
+// server-only Supabase helper
 import "server-only";
 import { cookies } from "next/headers";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
@@ -12,16 +13,12 @@ export function supabaseServer(): SupabaseClient | null {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) return null;
 
-  const store = cookies();
+  const c = cookies();
   return createServerClient(url, key, {
     cookies: {
-      get(name: string) { return store.get(name)?.value; },
-      set(name: string, value: string, options: CookieOptions) {
-        store.set({ name, value, ...options });
-      },
-      remove(name: string, options: CookieOptions) {
-        store.set({ name: "", value: "", ...options });
-      },
-    },
+      get: (n) => c.get(n)?.value,
+      set: (n, v, o: CookieOptions) => c.set({ name: n, value: v, ...o }),
+      remove: (n, o: CookieOptions) => c.set({ name: n, value: "", ...o })
+    }
   });
 }
