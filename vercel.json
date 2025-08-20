@@ -15,10 +15,9 @@
       "dest": "apps/architype-web/$1"
     }
   ],
-  "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm -w build",
-  "outputDirectory": "apps/architype-web/.next",
-  "framework": "nextjs",
+   "framework": "nextjs",
+  "installCommand": "corepack enable && corepack prepare pnpm@8.12.0 --activate && pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm build"
   "functions": {
     "apps/architype-web/src/app/api/**/*.ts": {
       "runtime": "nodejs18.x"
